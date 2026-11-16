@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeeDonate - ศูนย์รวมซอร์สโค้ดโดเนทสตรีมเมอร์โอเพนซอร์ส</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0f0c1b',
+                            card: '#18122b',
+                            border: '#2e2157',
+                            primary: '#9333ea',
+                            accent: '#ec4899'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.02)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 22s linear infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #0f0c1b;
+            color: #f3f4f6;
+        }
+        .glass-card {
+            background: rgba(24, 18, 43, 0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        /* Marquee wrapper styling */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+        .marquee-track {
+            display: inline-flex;
+            width: max-content;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+    </style>
+    <style>
+        .view { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+        .view[hidden] { display: none; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<div id="view-home" class="view">
+
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER -->
+    <!-- ========================================== -->
+    <header class="w-full border-b border-brand-border bg-brand-bg/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo with Mascot -->
+            <div class="flex items-center space-x-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-12 h-12 rounded-2xl bg-brand-card border border-purple-400/40 p-1 flex items-center justify-center shadow-lg shadow-purple-900/40 group-hover:border-purple-400 transition-all overflow-hidden">
+                    <img src="1794194149258.jpg" alt="LeeDonate Logo" class="w-full h-full object-cover rounded-xl">
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">LeeDonate</span>
+                        <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] px-2 py-0.5 rounded-full font-medium">Open-Source</span>
+                    </div>
+                    <span class="text-[11px] text-purple-300/70 block -mt-0.5 font-light">ระบบโดเนทสตรีมเมอร์โอเพนซอร์ส</span>
+                </div>
+            </div>
+
+            <!-- Header Menu / Action -->
+            <nav class="flex items-center space-x-3">
+                <a href="#products-section" class="text-sm text-slate-300 hover:text-white px-3.5 py-2 rounded-xl transition-colors">
+                    <i class="fa-solid fa-code text-purple-400 mr-1"></i> สินค้าและบริการ
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. MAIN CONTENT -->
+    <!-- ========================================== -->
+    <main class="max-w-5xl w-full mx-auto px-4 py-12 flex-grow flex flex-col gap-12">
+        
+        <!-- HERO SECTION: โชว์แบนเนอร์เต็มๆ -->
+        <section class="text-center flex flex-col items-center">
+            
+            <!-- แบนเนอร์หลัก (LeeOpenSource_glasses_transparent.jpg) -->
+            <div class="mb-8 relative group w-full max-w-3xl mx-auto">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 rounded-3xl blur-lg opacity-60 group-hover:opacity-90 transition duration-500"></div>
+                <div class="relative bg-brand-card border border-brand-border rounded-3xl p-3 shadow-2xl overflow-hidden">
+                    <img src="LeeOpenSource_glasses_transparent.jpg" alt="Lee Open Source Banner" class="w-full h-auto rounded-2xl object-cover">
+                </div>
+            </div>
+
+            <div class="inline-flex items-center space-x-2 bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs px-4 py-2 rounded-full mb-4">
+                <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
+                <span class="font-medium text-purple-300">🚀 ศูนย์รวมซอร์สโค้ดและเครื่องมือสตรีมเมอร์โอเพนซอร์ส</span>
+            </div>
+
+            <!-- ข้อความเคลื่อนไหวเลื่อนไปเรื่อยๆ (Smooth Sliding Marquee Header) -->
+            <div class="w-full max-w-4xl mx-auto overflow-hidden py-2 my-2 relative">
+                <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0f0c1b] to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0f0c1b] to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="marquee-container">
+                    <div class="marquee-track text-3xl sm:text-4xl font-extrabold text-white">
+                        <span class="mx-6">พัฒนาและแจกซอร์สโค้ดระบบโดเนท <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">ฟรี 100% สำหรับสตรีมเมอร์</span></span>
+                        <span class="mx-6 text-purple-400">•</span>
+                        <span class="mx-6">พัฒนาและแจกซอร์สโค้ดระบบโดเนท <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">ฟรี 100% สำหรับสตรีมเมอร์</span></span>
+                        <span class="mx-6 text-purple-400">•</span>
+                        <span class="mx-6">พัฒนาและแจกซอร์สโค้ดระบบโดเนท <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">ฟรี 100% สำหรับสตรีมเมอร์</span></span>
+                        <span class="mx-6 text-purple-400">•</span>
+                        <span class="mx-6">พัฒนาและแจกซอร์สโค้ดระบบโดเนท <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">ฟรี 100% สำหรับสตรีมเมอร์</span></span>
+                        <span class="mx-6 text-purple-400">•</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-slate-400 text-sm sm:text-base max-w-2xl mt-3">
+                ตอบโจทย์ครีเอเตอร์และนักพัฒนาด้วยระบบ PromptPay QR Code, OBS Overlay และเสียงอ่านภาษาไทย นำไปปรับแต่งต่อได้ทันทีใน VS Code
+            </p>
+        </section>
+
+        <!-- PRODUCTS SECTION: ตามแผนสินค้า 4 รายการในใบงาน -->
+        <section id="products-section" class="glass-card rounded-3xl p-6 sm:p-8 border border-brand-border">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-box-archive text-purple-400"></i> รายการสินค้าและบริการ (Products & Services)
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">อ้างอิงตามแผนธุรกิจในใบงานธุรกิจดิจิทัล</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- สินค้า 1 -->
+                <div class="bg-brand-bg/80 border border-brand-border rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2.5 py-1 rounded-md border border-purple-500/30 font-mono">Item 01</span>
+                        <h3 class="font-bold text-white text-base mt-2">ระบบฟอร์มโดเนทหน้าบ้าน</h3>
+                        <p class="text-xs text-slate-300 mt-1">หน้าเว็บกรอกข้อมูลผู้โดเนท คำนวณ PromptPay QR และส่งสัญญาณแจ้งเตือน</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-purple-900/40 flex justify-between items-center">
+                        <span class="text-xs font-bold text-emerald-400">ฟรี 0 บาท</span>
+                        <button onclick="showToast('เลือกสินค้า: ระบบฟอร์มโดเนทหน้าบ้าน')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-3.5 py-2 rounded-xl transition cursor-pointer">รายละเอียด</button>
+                    </div>
+                </div>
+
+                <!-- สินค้า 2 -->
+                <div class="bg-brand-bg/80 border border-brand-border rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] bg-pink-500/20 text-pink-300 px-2.5 py-1 rounded-md border border-pink-500/30 font-mono">Item 02</span>
+                        <h3 class="font-bold text-white text-base mt-2">OBS Alertbox & TTS</h3>
+                        <p class="text-xs text-slate-300 mt-1">หน้าจอแสดงผลแจ้งเตือนบน OBS พร้อมเสียงอ่านข้อความอัตโนมัติ</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-purple-900/40 flex justify-between items-center">
+                        <span class="text-xs font-bold text-emerald-400">ฟรี 0 บาท</span>
+                        <button onclick="showToast('เลือกสินค้า: OBS Alertbox & TTS')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-3.5 py-2 rounded-xl transition cursor-pointer">รายละเอียด</button>
+                    </div>
+                </div>
+
+                <!-- สินค้า 3 -->
+                <div class="bg-brand-bg/80 border border-brand-border rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-500/30 font-mono">Item 03</span>
+                        <h3 class="font-bold text-white text-base mt-2">แพ็กเกจซอร์สโค้ดรวมชุด (.zip)</h3>
+                        <p class="text-xs text-slate-300 mt-1">รวมไฟล์โปรเจกต์ทั้งหมดพร้อมคู่มือการติดตั้งใช้งานใน VS Code</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-purple-900/40 flex justify-between items-center">
+                        <span class="text-xs font-bold text-purple-300">ฟรี / สมทบทุนตามศรัทธา</span>
+                        <button onclick="showToast('เลือกสินค้า: แพ็กเกจซอร์สโค้ดรวมชุด')" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-3.5 py-2 rounded-xl transition cursor-pointer">รายละเอียด</button>
+                    </div>
+                </div>
+
+                <!-- สินค้า 4 -->
+                <div class="bg-brand-bg/80 border border-brand-border rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-md border border-amber-500/30 font-mono">Item 04</span>
+                        <h3 class="font-bold text-white text-base mt-2">ตลาดเอฟเฟกต์และเสียงแจ้งเตือน</h3>
+                        <p class="text-xs text-slate-300 mt-1">พื้นที่วางขายเอฟเฟกต์และเสียงแจ้งเตือนหน้าโดเนท (แบ่งส่วนแบ่ง 2 บาทให้แพลตฟอร์ม)</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-purple-900/40 flex justify-between items-center">
+                        <span class="text-xs font-bold text-amber-400">2 บาท / ชิ้น</span>
+                        <a href="#effects" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-4 py-2 rounded-xl transition cursor-pointer inline-block text-center font-medium">เข้า</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 3. FOOTER -->
+    <!-- ========================================== -->
+    <footer class="w-full border-t border-brand-border bg-brand-bg py-6 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-2">
+                <img src="1794194149258.jpg" class="w-6 h-6 rounded-full object-cover">
+                <span>© 2026 <strong class="text-white">LeeDonate</strong> — จัดทำโดย นาย อัตรคุปต์ อุไรรุ่งโรจน์</span>
+            </div>
+            <div>ติดต่อโครงการ: kuy90281@gmail.com</div>
+        </div>
+    </footer>
+</div>
+<div id="view-effects" class="view" hidden>
+
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER -->
+    <!-- ========================================== -->
+    <header class="w-full border-b border-brand-border bg-brand-bg/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-brand-card border border-purple-400/40 p-1 flex items-center justify-center shadow-lg shadow-purple-900/40 group-hover:border-purple-400 transition-all overflow-hidden">
+                    <img src="1794194149258.jpg" alt="LeeDonate Logo" class="w-full h-full object-cover rounded-xl">
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">LeeDonate</span>
+                        <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] px-2 py-0.5 rounded-full font-medium">Effect Hub</span>
+                    </div>
+                    <span class="text-[11px] text-purple-300/70 block -mt-0.5 font-light">ตลาดเอฟเฟกต์ คลังของฉัน & Creator Studio</span>
+                </div>
+            </a>
+
+            <!-- Navigation & Cart Button -->
+            <nav class="flex items-center space-x-3">
+                <a href="#home" class="text-xs sm:text-sm text-slate-300 hover:text-white bg-brand-card border border-brand-border hover:border-purple-500/50 px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left text-purple-400"></i> <span class="hidden sm:inline">กลับหน้าหลัก</span>
+                </a>
+                <button onclick="toggleCartModal()" class="relative bg-purple-600 hover:bg-purple-500 text-white text-xs sm:text-sm px-4 py-2 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-purple-900/40 cursor-pointer">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="hidden sm:inline">ตะกร้า</span>
+                    <span id="cartCount" class="bg-pink-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. MAIN CONTENT -->
+    <!-- ========================================== -->
+    <main class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow flex flex-col gap-6">
+        
+        <!-- TABS NAVIGATION (สลับโซน 3 โซน) -->
+        <div class="glass-card rounded-2xl p-2 border border-brand-border flex flex-wrap gap-2">
+            <button onclick="switchTab('marketplace')" id="tab-marketplace" class="tab-btn flex-1 min-w-[140px] bg-purple-600 text-white text-xs sm:text-sm font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                <i class="fa-solid fa-store"></i> ตลาดกลาง (Marketplace)
+            </button>
+            <button onclick="switchTab('inventory')" id="tab-inventory" class="tab-btn flex-1 min-w-[140px] bg-transparent text-slate-300 hover:text-white hover:bg-brand-bg/60 text-xs sm:text-sm font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-box-open text-emerald-400"></i> คลังของฉัน (My Inventory)
+                <span id="inventoryBadge" class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] px-2 py-0.5 rounded-full">1</span>
+            </button>
+            <button onclick="switchTab('studio')" id="tab-studio" class="tab-btn flex-1 min-w-[140px] bg-transparent text-slate-300 hover:text-white hover:bg-brand-bg/60 text-xs sm:text-sm font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> Creator Studio (ลงขายผลงาน)
+            </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ZONE 1: MARKETPLACE (ตลาดกลาง) -->
+        <!-- ========================================== -->
+        <div id="zone-marketplace" class="zone-section flex flex-col gap-6">
+            <section class="glass-card rounded-3xl p-6 sm:p-8 border border-brand-border flex flex-col gap-6">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs px-3 py-1 rounded-full mb-3">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Marketplace & Sound Effects (<span id="totalStoreItems">20</span> รายการ)</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold text-white">
+                            เลือกช้อป <span class="bg-gradient-to-r from-amber-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">เอฟเฟกต์และเสียงแจ้งเตือน</span> สำหรับ OBS
+                        </h1>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-2xl">
+                            กดทดลองฟังเสียงตัวอย่างได้ทันทีก่อนตัดสินใจ เมื่อสั่งซื้อแล้วเอฟเฟกต์จะถูกส่งเข้าสู่หน้า <strong>"คลังของฉัน"</strong> อัตโนมัติ (ค่าธรรมเนียมแพลตฟอร์ม 2 บาท/ชิ้น)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Search & Category Filter Bar -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-brand-border">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterCategory('all', this)" class="filter-btn bg-purple-600 text-white text-xs px-4 py-2 rounded-xl transition cursor-pointer">ทั้งหมด (20)</button>
+                        <button onclick="filterCategory('sound', this)" class="filter-btn bg-brand-bg border border-brand-border text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition cursor-pointer">เสียงแจ้งเตือน (12)</button>
+                        <button onclick="filterCategory('effect', this)" class="filter-btn bg-brand-bg border border-brand-border text-slate-300 hover:text-white text-xs px-4 py-2 rounded-xl transition cursor-pointer">แอนิเมชัน / GIF (8)</button>
+                    </div>
+
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="searchInput" oninput="searchEffects()" placeholder="ค้นหาชื่อเอฟเฟกต์..." class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl pl-9 pr-4 py-2 text-xs text-white outline-none">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Grid -->
+            <section id="effectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Cards rendered by JS -->
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ZONE 2: MY INVENTORY (คลังของฉัน & OBS Link) -->
+        <!-- ========================================== -->
+        <div id="zone-inventory" class="zone-section hidden flex flex-col gap-6">
+            <section class="glass-card rounded-3xl p-6 sm:p-8 border border-brand-border">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-brand-border">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-box-open text-emerald-400"></i> คลังเอฟเฟกต์ส่วนตัว (My Inventory)
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                            เลือกเปิด-ปิด (Toggle) เอฟเฟกต์ที่คุณต้องการให้ทำงานร่วมกับหน้าจอ OBS Alertbox ของคุณ
+                        </p>
+                    </div>
+
+                    <!-- OBS Browser Source Link Box -->
+                    <div class="bg-brand-bg border border-purple-500/30 rounded-2xl p-3 flex items-center gap-3">
+                        <div class="text-xs">
+                            <span class="text-purple-300 font-semibold block">OBS Browser Source URL:</span>
+                            <code id="obsUrlText" class="text-slate-400 text-[11px]">https://leedonate.local/obs-alert?effects=100</code>
+                        </div>
+                        <button onclick="copyObsUrl()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-3 py-2 rounded-xl transition cursor-pointer shrink-0">
+                            <i class="fa-regular fa-copy mr-1"></i> คัดลอกลิงก์
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Inventory Items List -->
+                <div id="inventoryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <!-- Inventory cards rendered by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ZONE 3: CREATOR STUDIO (ส่งผลงาน / ตั้งราคาขาย) -->
+        <!-- ========================================== -->
+        <div id="zone-studio" class="zone-section hidden flex flex-col gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Form อัปโหลดและตั้งราคา -->
+                <section class="lg:col-span-2 glass-card rounded-3xl p-6 sm:p-8 border border-brand-border">
+                    <div class="mb-6">
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-full font-medium">Creator Revenue Share</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white mt-2 flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up text-amber-400"></i> ส่งผลงานเอฟเฟกต์เข้าสู่ตลาดกลาง
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                            อัปโหลดเสียงแจ้งเตือนหรือภาพแอนิเมชันของคุณเองเพื่อวางขายใน LeeDonate (ระบบหักส่วนแบ่ง 2 บาทต่อการขาย 1 ชิ้น ตามแผนธุรกิจ)
+                        </p>
+                    </div>
+
+                    <form id="creatorForm" onsubmit="submitCreatorItem(event)" class="flex flex-col gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1.5">ชื่อเอฟเฟกต์ / เสียงแจ้งเตือน *</label>
+                                <input type="text" id="itemName" required placeholder="เช่น เสียงระเบิดตูมตาม, กรอบอนิเมะ" class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl px-4 py-2.5 text-sm text-white outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1.5">หมวดหมู่ *</label>
+                                <select id="itemCategory" class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl px-4 py-2.5 text-sm text-white outline-none">
+                                    <option value="sound">เสียงแจ้งเตือน (Sound Effect)</option>
+                                    <option value="effect">แอนิเมชัน / GIF (Visual Overlay)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">คำอธิบายจุดเด่นของผลงาน *</label>
+                            <textarea id="itemDesc" rows="2" required placeholder="อธิบายสั้นๆ ว่าเอฟเฟกต์นี้เหมาะกับสตรีมแนวไหน..." class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl px-4 py-2.5 text-sm text-white outline-none"></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1.5">ตั้งราคาขายสุทธิ (บาท) *</label>
+                                <input type="number" id="itemPrice" min="5" max="500" value="15" oninput="calculateRevenueShare()" required class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl px-4 py-2.5 text-sm text-white outline-none">
+                                <span class="text-[11px] text-slate-400 mt-1 block">แนะนำราคา 10 - 50 บาท</span>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1.5">โทนเสียงตัวอย่าง (จำลองทดสอบ)</label>
+                                <select id="itemTone" class="w-full bg-brand-bg border border-brand-border focus:border-purple-500 rounded-xl px-4 py-2.5 text-sm text-white outline-none">
+                                    <option value="coin">โทนสดใส / เก็บเหรียญ (High Pitch)</option>
+                                    <option value="alert">โทนตื่นเต้น / เตือนภัย (Alert Pulse)</option>
+                                    <option value="cute">โทนอนิเมะ / น่ารัก (Soft Chime)</option>
+                                    <option value="bass">โทนตลก / เสียงทุ้ม (Deep Bass)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- จำลองการเลือกไฟล์ -->
+                        <div class="border-2 border-dashed border-brand-border hover:border-purple-500/50 rounded-2xl p-4 text-center bg-brand-bg/50 transition">
+                            <i class="fa-solid fa-file-audio text-2xl text-purple-400 mb-1"></i>
+                            <p class="text-xs text-slate-300">เลือกไฟล์เสียง (.mp3, .wav) หรือไฟล์ภาพเคลื่อนไหว (.gif, .webm)</p>
+                            <input type="file" id="itemFile" accept=".mp3,.wav,.gif,.webm,.png" class="mt-2 text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer">
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-pink-600 hover:from-amber-400 hover:to-pink-500 text-white font-bold text-sm py-3.5 rounded-xl transition shadow-lg cursor-pointer mt-2">
+                            <i class="fa-solid fa-paper-plane mr-1.5"></i> เผยแพร่ผลงานลงตลาดกลางทันที
+                        </button>
+                    </form>
+                </section>
+
+                <!-- กล่องคำนวณส่วนแบ่งรายได้ (Business Model Calculator) -->
+                <aside class="glass-card rounded-3xl p-6 border border-amber-500/30 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-white flex items-center gap-2 pb-3 border-b border-brand-border">
+                            <i class="fa-solid fa-calculator text-amber-400"></i> สรุปส่วนแบ่งรายได้ต่อชิ้น
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                            ตามโมเดลธุรกิจของ <strong>LeeDonate</strong> แพลตฟอร์มจะคิดค่าบริการดูแลระบบเพียง <strong>2 บาท/ชิ้น</strong> เพื่อให้ครีเอเตอร์ได้รับรายได้เต็มเม็ดเต็มหน่วย
+                        </p>
+
+                        <div class="bg-brand-bg border border-brand-border rounded-2xl p-4 mt-4 flex flex-col gap-3">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400">ราคาที่ครีเอเตอร์ตั้งไว้:</span>
+                                <span id="calcBasePrice" class="text-white font-semibold">15 บาท</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400">ส่วนแบ่งแพลตฟอร์ม (คงที่):</span>
+                                <span class="text-amber-400 font-semibold">+ 2 บาท</span>
+                            </div>
+                            <div class="pt-2 border-t border-brand-border flex justify-between text-sm font-bold">
+                                <span class="text-slate-200">ราคาหน้าร้านรวม:</span>
+                                <span id="calcStorePrice" class="text-purple-400">17 บาท</span>
+                            </div>
+                            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 flex justify-between items-center mt-1">
+                                <span class="text-xs text-emerald-300 font-medium">ครีเอเตอร์รับสุทธิ:</span>
+                                <span id="calcCreatorNet" class="text-base font-extrabold text-emerald-400">15 บาท / ชิ้น</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-brand-border text-[11px] text-slate-400">
+                        <i class="fa-solid fa-circle-info text-purple-400 mr-1"></i> ผลงานที่กดเผยแพร่จะไปปรากฏในแท็บ <strong>ตลาดกลาง</strong> ทันทีเพื่อให้สตรีมเมอร์กดซื้อได้
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 3. CART MODAL -->
+    <!-- ========================================== -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card border border-purple-500/40 rounded-3xl max-w-md w-full p-6 shadow-2xl">
+            <div class="flex justify-between items-center pb-4 border-b border-brand-border">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-purple-400"></i> ตะกร้าเอฟเฟกต์ของฉัน
+                </h3>
+                <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white text-lg cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="cartItemsList" class="py-4 max-h-64 overflow-y-auto flex flex-col gap-3">
+                <!-- Cart items rendered here -->
+            </div>
+
+            <div class="pt-4 border-t border-brand-border flex flex-col gap-3">
+                <div class="flex justify-between text-xs text-slate-400">
+                    <span>ค่าธรรมเนียมแพลตฟอร์ม (2 บาท/ชิ้น):</span>
+                    <span id="platformFeeText" class="text-amber-400 font-medium">0 บาท</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-white">
+                    <span>ยอดชำระรวมทั้งหมด:</span>
+                    <span id="totalPriceText" class="text-emerald-400">0 บาท</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm py-3 rounded-xl transition shadow-lg cursor-pointer mt-2">
+                    ยืนยันการสั่งซื้อ & ส่งเข้าคลังของฉัน
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. FOOTER -->
+    <!-- ========================================== -->
+    <footer class="w-full border-t border-brand-border bg-brand-bg py-6 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-2">
+                <img src="1794194149258.jpg" class="w-6 h-6 rounded-full object-cover">
+                <span>© 2026 <strong class="text-white">LeeDonate</strong> — จัดทำโดย นาย อัตรคุปต์ อุไรรุ่งโรจน์</span>
+            </div>
+            <div>ติดต่อโครงการ: kuy90281@gmail.com</div>
+        </div>
+    </footer>
+</div>
+<div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-brand-card text-white px-5 py-3 rounded-xl border border-purple-500/50 shadow-2xl flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-purple-400"></i>
+        <span id="toastMessage" class="text-xs font-medium">แจ้งเตือนระบบ</span>
+    </div>
+
+    <script>
+        // ข้อมูลสินค้า 20 รายการในตลาดเอฟเฟกต์
+        let effectsData = [
+            {
+                id: 1,
+                name: "เสียงเหรียญมาริโอ้ (Retro Coin)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 10,
+                creator: "LeeDonate Official",
+                desc: "เสียงเก็บเหรียญสุดคลาสสิก สั้น กระชับ ฟังแล้วติดหู เหมาะกับโดเนทเริ่มต้น",
+                icon: "fa-coins",
+                freq: [987.77, 1318.51]
+            },
+            {
+                id: 2,
+                name: "เสียงไซเรนเตือนภัย (Red Alert)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 15,
+                creator: "SoundMaker TH",
+                desc: "เสียงไซเรนดังสนั่นจอ สำหรับโดเนทก้อนโตหรือสายปั่นประจำช่อง",
+                icon: "fa-triangle-exclamation",
+                freq: [600, 900, 600, 900]
+            },
+            {
+                id: 3,
+                name: "เอฟเฟกต์พลุฉลอง (Neon Confetti)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 20,
+                creator: "PixelArt Studio",
+                desc: "แอนิเมชันพลุสีนีออนกระจายเต็มขอบจอ OBS พร้อมแสงวิบวับ",
+                icon: "fa-wand-magic-sparkles",
+                freq: [523.25, 659.25, 783.99, 1046.50]
+            },
+            {
+                id: 4,
+                name: "เสียงแมวเหมียวอ้อน (Cute Meow)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 12,
+                creator: "NekoVoice",
+                desc: "เสียงร้องเหมียวสุดน่ารัก เพิ่มความสดใสให้แชทและสตรีมเมอร์",
+                icon: "fa-cat",
+                freq: [700, 850, 650]
+            },
+            {
+                id: 5,
+                name: "กรอบแจ้งเตือนสไตล์ไซเบอร์พังก์",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 25,
+                creator: "CyberOverlay",
+                desc: "กรอบ Alertbox เรืองแสงสีม่วง-ชมพู ขยับตามจังหวะข้อความ TTS",
+                icon: "fa-display",
+                freq: [440, 554.37, 659.25]
+            },
+            {
+                id: 6,
+                name: "เสียงกลองรัวตลก (Ba Dum Tss)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 10,
+                creator: "MemeSound",
+                desc: "จังหวะตบมุกยอดฮิต เวลาคนดูพิมพ์ข้อความฮาๆ เข้ามาในสตรีม",
+                icon: "fa-drum",
+                freq: [300, 300, 150]
+            },
+            {
+                id: 7,
+                name: "เสียงอัปเลเวล RPG (Level Up!)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 15,
+                creator: "8BitHero",
+                desc: "ซาวด์ตัวละครอัปเลเวลสไตล์เกม RPG ย้อนยุค ปลุกพลังให้สตรีมเมอร์",
+                icon: "fa-arrow-up-right-dots",
+                freq: [440, 554.37, 659.25, 880, 1108.73]
+            },
+            {
+                id: 8,
+                name: "ฝนดาวตกกาแล็กซี (Starlight Shower)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 30,
+                creator: "AstroVFX",
+                desc: "ละอองดาวตกสีม่วง-ฟ้าโปรยปรายทั่วหน้าจอ เหมาะกับสตรีมช่วงกลางคืน",
+                icon: "fa-meteor",
+                freq: [880, 1046.50, 1318.51, 1567.98]
+            },
+            {
+                id: 9,
+                name: "เสียงเป็ดยางบีบ (Rubber Duck)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 10,
+                creator: "TrollMaster",
+                desc: "เสียงบีบเป็ดยางสุดกวน ไว้แกล้งสตรีมเมอร์จังหวะกำลังตั้งใจเล่นเกม",
+                icon: "fa-face-grin-squint-tears",
+                freq: [950, 750, 980]
+            },
+            {
+                id: 10,
+                name: "หัวใจพิกเซลลอยฟุ้ง (Pixel Hearts)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 18,
+                creator: "KawaiiCraft",
+                desc: "หัวใจ 8-Bit ลอยขึ้นรอบกรอบแจ้งเตือน เพิ่มความน่ารักให้คนดูสายซัพพอร์ต",
+                icon: "fa-heart",
+                freq: [659.25, 783.99, 987.77]
+            },
+            {
+                id: 11,
+                name: "เสียงแตรวงฉลองชัย (Airhorn MLG)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 12,
+                creator: "MemeSound",
+                desc: "เสียงแตรสุดฮิตประจำวงการเกมมิ่ง กดทีไรแชทแตกทุกที",
+                icon: "fa-bullhorn",
+                freq: [480, 480, 480, 620]
+            },
+            {
+                id: 12,
+                name: "วงแหวนเวทมนตร์อนิเมะ (Magic Circle)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 35,
+                creator: "AniMotion",
+                desc: "วงแหวนอักขระเวทมนตร์หมุนเรืองแสงกลางจอ พร้อมเอฟเฟกต์ประกายไฟ",
+                icon: "fa-dharmachakra",
+                freq: [392.00, 493.88, 587.33, 783.99]
+            },
+            {
+                id: 13,
+                name: "เสียงกระดิ่งร้านสะดวกซื้อ (Family Chime)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 15,
+                creator: "TokyoVibe",
+                desc: "ทำนองเมโลดี้กระดิ่งเข้าร้านสุดคุ้นเคย เหมือนมีคนเดินเข้ามาทักทายในช่อง",
+                icon: "fa-bell-concierge",
+                freq: [739.99, 587.33, 440, 587.33, 659.25, 880]
+            },
+            {
+                id: 14,
+                name: "เสียงเอฟเฟกต์วาร์ปไซไฟ (Sci-Fi Warp)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 14,
+                creator: "CyberOverlay",
+                desc: "ซาวด์ยานอวกาศวาร์ปข้ามมิติ ล้ำสมัยเหมาะกับช่องสายเทคโนโลยีและเกมอวกาศ",
+                icon: "fa-rocket",
+                freq: [220, 440, 880, 1760]
+            },
+            {
+                id: 15,
+                name: "สายฟ้าฟาดหน้าจอ (Thunder Strike)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 28,
+                creator: "StormVFX",
+                desc: "แอนิเมชันสายฟ้าสีม่วงฟาดลงกลาง Alertbox พร้อมเอฟเฟกต์จอสั่นเบาๆ",
+                icon: "fa-bolt-lightning",
+                freq: [180, 140, 110, 90]
+            },
+            {
+                id: 16,
+                name: "เสียงกบเคโระร้องทัก (Ribbit Frog)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 10,
+                creator: "NatureLoop",
+                desc: "เสียงกบร้องสั้นๆ น่ารักเป็นธรรมชาติ ฟังสบายหูไม่รบกวนเสียงพูด",
+                icon: "fa-frog",
+                freq: [320, 480, 310]
+            },
+            {
+                id: 17,
+                name: "กลีบซากุระปลิวไสว (Sakura Breeze)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 25,
+                creator: "AniMotion",
+                desc: "กลีบดอกซากุระสีชมพูอ่อนพัดผ่านหน้าจอ ละมุนตาเข้ากับสตรีมสายชิล",
+                icon: "fa-fan",
+                freq: [587.33, 659.25, 880, 783.99]
+            },
+            {
+                id: 18,
+                name: "เสียงระเบิดตูมตาม (Epic Explosion)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 15,
+                creator: "SoundMaker TH",
+                desc: "ซาวด์เอฟเฟกต์ระเบิดพลังทำลายล้างสูง สำหรับโดเนทระดับบิ๊กบอส",
+                icon: "fa-bomb",
+                freq: [150, 110, 80, 60]
+            },
+            {
+                id: 19,
+                name: "กรอบแจ้งเตือนแมวเหมียวหูตั้ง (Neko Frame)",
+                category: "effect",
+                tag: "แอนิเมชัน / GIF",
+                price: 22,
+                creator: "KawaiiCraft",
+                desc: "กรอบข้อความโดเนทมีหูแมวขยับดุ๊กดิ๊กได้ น่ารักสะดุดตาทุกยอดโดเนท",
+                icon: "fa-paw",
+                freq: [783.99, 987.77, 1174.66]
+            },
+            {
+                id: 20,
+                name: "เสียงปรบมือรัวให้กำลังใจ (Crowd Applause)",
+                category: "sound",
+                tag: "เสียงแจ้งเตือน",
+                price: 12,
+                creator: "LeeDonate Official",
+                desc: "เสียงปรบมือแสดงความยินดี เวลาสตรีมเมอร์ผ่านด่านยากหรือทำภารกิจสำเร็จ",
+                icon: "fa-hands-clapping",
+                freq: [523.25, 659.25, 783.99, 659.25, 783.99]
+            }
+        ];
+
+        // คลังของฉัน (มีไอเทมเริ่มต้นฟรี 1 ชิ้นให้ลองเปิด-ปิดได้เลย)
+        let myInventory = [
+            {
+                id: 100,
+                name: "เสียงแจ้งเตือนมาตรฐาน LeeDonate (Default TTS)",
+                category: "sound",
+                tag: "เสียงระบบเริ่มต้น",
+                icon: "fa-bell",
+                freq: [587.33, 880],
+                active: true
+            }
+        ];
+
+        let cart = [];
+        let currentCategory = 'all';
+
+        // สลับแท็บระหว่าง 3 โซน
+        function switchTab(tabName) {
+            document.querySelectorAll('.zone-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`zone-${tabName}`).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-transparent', 'text-slate-300');
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.classList.remove('bg-transparent', 'text-slate-300');
+            activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+
+            if (tabName === 'inventory') renderInventory();
+            if (tabName === 'marketplace') renderEffects();
+        }
+
+        // เล่นเสียงตัวอย่างด้วย Web Audio API
+        function playPreviewSound(freqs) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioCtx();
+                let time = ctx.currentTime;
+
+                freqs.forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(f, time + idx * 0.11);
+                    
+                    gain.gain.setValueAtTime(0.15, time + idx * 0.11);
+                    gain.gain.exponentialRampToValueAtTime(0.001, time + idx * 0.11 + 0.24);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(time + idx * 0.11);
+                    osc.stop(time + idx * 0.11 + 0.24);
+                });
+                showToast('กำลังเล่นตัวอย่างเสียงแจ้งเตือน...');
+            } catch (e) {
+                showToast('เบราว์เซอร์ไม่รองรับการเล่นเสียงอัตโนมัติ');
+            }
+        }
+
+        // แสดงรายการใน Marketplace (รองรับทั้งกรองหมวดหมู่และค้นหาชื่อ)
+        function renderEffects() {
+            const grid = document.getElementById('effectsGrid');
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            grid.innerHTML = '';
+
+            document.getElementById('totalStoreItems').innerText = effectsData.length;
+
+            const filtered = effectsData.filter(item => {
+                const matchCat = currentCategory === 'all' || item.category === currentCategory;
+                const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
+                                    item.desc.toLowerCase().includes(searchQuery) ||
+                                    item.creator.toLowerCase().includes(searchQuery);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 glass-card rounded-3xl border border-brand-border text-slate-400 text-sm">ไม่พบรายการเอฟเฟกต์ที่ค้นหาครับ</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const owned = myInventory.some(inv => inv.id === item.id);
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-5 border border-brand-border hover:border-purple-500/50 transition-all flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-11 h-11 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 text-lg">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <span class="text-[10px] bg-brand-bg border border-brand-border text-slate-300 px-2.5 py-1 rounded-full">${item.tag}</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base mt-3">${item.name}</h3>
+                        <span class="text-[11px] text-purple-300/80 block mt-0.5">โดย: ${item.creator}</span>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">${item.desc}</p>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t border-brand-border flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-sm font-extrabold text-emerald-400">${item.price} บาท</span>
+                            <span class="text-[10px] text-slate-400 block">+2 บาท ค่าแพลตฟอร์ม</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick='playPreviewSound(${JSON.stringify(item.freq)})' class="bg-brand-bg hover:bg-purple-950 text-purple-300 border border-purple-500/30 text-xs px-3 py-2 rounded-xl transition cursor-pointer" title="ทดลองฟังเสียง">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            ${owned 
+                                ? `<button onclick="switchTab('inventory')" class="bg-emerald-600/20 text-emerald-300 border border-emerald-500/40 text-xs px-3 py-2 rounded-xl cursor-pointer font-medium">มีในคลังแล้ว</button>`
+                                : `<button onclick="addToCart(${item.id})" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-3.5 py-2 rounded-xl transition cursor-pointer font-medium">+ ใส่ตะกร้า</button>`
+                            }
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat, btnElement) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('bg-brand-bg', 'border', 'border-brand-border', 'text-slate-300');
+            });
+            btnElement.classList.remove('bg-brand-bg', 'border', 'border-brand-border', 'text-slate-300');
+            btnElement.classList.add('bg-purple-600', 'text-white');
+            renderEffects();
+        }
+
+        function searchEffects() {
+            renderEffects();
+        }
+
+        // ระบบตะกร้า
+        function addToCart(id) {
+            if (myInventory.some(inv => inv.id === id)) {
+                showToast('คุณมีเอฟเฟกต์นี้อยู่ในคลังแล้วครับ');
+                return;
+            }
+            if (cart.some(c => c.id === id)) {
+                showToast('รายการนี้อยู่ในตะกร้าแล้วครับ');
+                return;
+            }
+            const item = effectsData.find(e => e.id === id);
+            cart.push(item);
+            updateCartUI();
+            showToast(`เพิ่ม "${item.name}" ลงตะกร้าแล้ว`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            
+            if (cart.length === 0) {
+                list.innerHTML = `<p class="text-center text-xs text-slate-400 py-6">ยังไม่มีเอฟเฟกต์ในตะกร้า</p>`;
+                document.getElementById('platformFeeText').innerText = '0 บาท';
+                document.getElementById('totalPriceText').innerText = '0 บาท';
+                return;
+            }
+
+            list.innerHTML = '';
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price;
+                const row = document.createElement('div');
+                row.className = "bg-brand-bg border border-brand-border rounded-xl p-3 flex justify-between items-center";
+                row.innerHTML = `
+                    <div>
+                        <p class="text-xs font-bold text-white">${item.name}</p>
+                        <span class="text-[11px] text-emerald-400">${item.price} บาท</span>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-rose-400 hover:text-rose-300 text-xs px-2 py-1 cursor-pointer">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                `;
+                list.appendChild(row);
+            });
+
+            const platformFee = cart.length * 2;
+            const total = subtotal + platformFee;
+
+            document.getElementById('platformFeeText').innerText = `${platformFee} บาท`;
+            document.getElementById('totalPriceText').innerText = `${total} บาท`;
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+            updateCartUI();
+        }
+
+        // ยืนยันสั่งซื้อ -> ย้ายสินค้าเข้า My Inventory
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('กรุณาเลือกเอฟเฟกต์ลงตะกร้าก่อนครับ');
+                return;
+            }
+            cart.forEach(item => {
+                myInventory.push({
+                    ...item,
+                    active: true
+                });
+            });
+            const boughtCount = cart.length;
+            cart = [];
+            updateCartUI();
+            toggleCartModal();
+            updateInventoryBadge();
+            showToast(`สั่งซื้อสำเร็จ ${boughtCount} รายการ! ส่งเข้า "คลังของฉัน" เรียบร้อย`);
+            switchTab('inventory');
+        }
+
+        // แสดงรายการใน My Inventory
+        function renderInventory() {
+            const grid = document.getElementById('inventoryGrid');
+            grid.innerHTML = '';
+
+            myInventory.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `bg-brand-bg/90 border ${item.active ? 'border-emerald-500/50' : 'border-brand-border'} rounded-2xl p-5 flex items-center justify-between gap-4 transition-all`;
+                card.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl ${item.active ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' : 'bg-slate-800 text-slate-400 border-slate-700'} border flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid ${item.icon}"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-white text-sm sm:text-base">${item.name}</h3>
+                            </div>
+                            <span class="text-[11px] ${item.active ? 'text-emerald-400' : 'text-slate-400'} block mt-0.5">
+                                ${item.active ? '● กำลังเปิดใช้งานบน OBS Alertbox' : '○ ปิดการใช้งานอยู่'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <button onclick='playPreviewSound(${JSON.stringify(item.freq)})' class="bg-brand-card hover:bg-purple-950 text-purple-300 border border-purple-500/30 text-xs px-3 py-2 rounded-xl transition cursor-pointer" title="ทดสอบเสียง">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button onclick="toggleInventoryItem(${item.id})" class="${item.active ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-slate-700 hover:bg-slate-600'} text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition cursor-pointer">
+                            ${item.active ? 'เปิดอยู่' : 'ปิดอยู่'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updateObsUrl();
+        }
+
+        function toggleInventoryItem(id) {
+            const target = myInventory.find(i => i.id === id);
+            if (target) {
+                target.active = !target.active;
+                renderInventory();
+                showToast(`${target.active ? 'เปิด' : 'ปิด'}การใช้งาน "${target.name}" แล้ว`);
+            }
+        }
+
+        function updateInventoryBadge() {
+            document.getElementById('inventoryBadge').innerText = myInventory.length;
+        }
+
+        function updateObsUrl() {
+            const activeIds = myInventory.filter(i => i.active).map(i => i.id).join(',');
+            document.getElementById('obsUrlText').innerText = `https://leedonate.local/obs-alert?effects=${activeIds || 'none'}`;
+        }
+
+        function copyObsUrl() {
+            const url = document.getElementById('obsUrlText').innerText;
+            navigator.clipboard.writeText(url);
+            showToast('คัดลอกลิงก์ OBS Browser Source เรียบร้อยแล้ว!');
+        }
+
+        // Creator Studio: คำนวณส่วนแบ่งรายได้
+        function calculateRevenueShare() {
+            const base = parseInt(document.getElementById('itemPrice').value) || 0;
+            const fee = 2;
+            document.getElementById('calcBasePrice').innerText = `${base} บาท`;
+            document.getElementById('calcStorePrice').innerText = `${base + fee} บาท`;
+            document.getElementById('calcCreatorNet').innerText = `${base} บาท / ชิ้น`;
+        }
+
+        // Creator Studio: เผยแพร่ผลงานใหม่เข้าตลาด
+        function submitCreatorItem(e) {
+            e.preventDefault();
+            const name = document.getElementById('itemName').value.trim();
+            const category = document.getElementById('itemCategory').value;
+            const desc = document.getElementById('itemDesc').value.trim();
+            const price = parseInt(document.getElementById('itemPrice').value) || 10;
+            const tone = document.getElementById('itemTone').value;
+
+            const toneMap = {
+                coin: [987.77, 1318.51],
+                alert: [600, 900, 600, 900],
+                cute: [700, 850, 650],
+                bass: [300, 300, 150]
+            };
+
+            const newId = Date.now();
+            const newItem = {
+                id: newId,
+                name: name,
+                category: category,
+                tag: category === 'sound' ? 'เสียงแจ้งเตือน' : 'แอนิเมชัน / GIF',
+                price: price,
+                creator: "คุณ (Creator)",
+                desc: desc,
+                icon: category === 'sound' ? 'fa-volume-high' : 'fa-sparkles',
+                freq: toneMap[tone] || [523.25, 659.25]
+            };
+
+            effectsData.unshift(newItem);
+            myInventory.push({ ...newItem, active: true });
+            updateInventoryBadge();
+
+            document.getElementById('creatorForm').reset();
+            calculateRevenueShare();
+            showToast(`เผยแพร่ "${name}" ลงตลาดกลางเรียบร้อยแล้ว!`);
+            switchTab('marketplace');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        // เริ่มต้นโหลดข้อมูล
+        renderEffects();
+        updateInventoryBadge();
+    </script>
+    <script>
+        // สลับหน้าด้วย hash: #home (หน้าหลัก) / #effects (ตลาดเอฟเฟกต์)
+        function route() {
+            const isEffects = location.hash === '#effects';
+            document.getElementById('view-home').hidden = isEffects;
+            document.getElementById('view-effects').hidden = !isEffects;
+            document.title = isEffects
+                ? 'LeeDonate - ตลาดเอฟเฟกต์ คลังของฉัน & Creator Studio'
+                : 'LeeDonate - ศูนย์รวมซอร์สโค้ดโดเนทสตรีมเมอร์โอเพนซอร์ส';
+            if (isEffects || location.hash === '' || location.hash === '#home') window.scrollTo(0, 0);
+        }
+        window.addEventListener('hashchange', route);
+        route();
+
+        // ถ้ารูปโหลดไม่ได้ ให้แสดงตัวอักษร L แทน ไม่ให้เป็นไอคอนรูปแตก
+        document.addEventListener('error', function (e) {
+            const img = e.target;
+            if (img.tagName !== 'IMG') return;
+            const holder = img.closest('.w-12, .w-6') ;
+            if (holder) {
+                const ph = document.createElement('span');
+                ph.textContent = 'L';
+                ph.className = 'font-extrabold text-purple-300 text-sm';
+                img.replaceWith(ph);
+            } else {
+                (img.closest('div') || img).style.display = 'none';
+            }
+        }, true);
+    </script>
+</body>
+</html>
