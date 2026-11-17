@@ -7,6 +7,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Prompt -->
@@ -110,6 +111,9 @@
             <nav class="flex items-center space-x-3">
                 <a href="#products-section" class="text-sm text-slate-300 hover:text-white px-3.5 py-2 rounded-xl transition-colors">
                     <i class="fa-solid fa-code text-purple-400 mr-1"></i> สินค้าและบริการ
+                </a>
+                <a href="#donate" class="text-sm text-white bg-purple-600 hover:bg-purple-500 px-3.5 py-2 rounded-xl transition-colors font-medium">
+                    <i class="fa-solid fa-qrcode mr-1"></i> โดเนท (QR เดโม)
                 </a>
             </nav>
         </div>
@@ -240,6 +244,58 @@
             <div>ติดต่อโครงการ: kuy90281@gmail.com</div>
         </div>
     </footer>
+</div>
+<div id="view-donate" class="view" hidden>
+    <header class="w-full border-b border-brand-border bg-brand-bg/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
+            <span class="text-lg font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">LeeDonate</span>
+            <a href="#home" class="text-sm text-slate-300 hover:text-white"><i class="fa-solid fa-arrow-left mr-1"></i> กลับหน้าหลัก</a>
+        </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-3xl mx-auto px-4 py-10">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-white mb-2">โดเนทผ่าน PromptPay QR <span class="align-middle text-sm font-semibold px-2 py-1 rounded-lg bg-amber-500/20 border border-amber-400/40 text-amber-300">เดโม</span></h1>
+            <p class="text-slate-400 text-sm">กรอกจำนวนเงินเพื่อดูตัวอย่างหน้าตาของ QR Code ในระบบ (ใช้จ่ายจริงไม่ได้)</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <section class="bg-brand-card border border-brand-border rounded-3xl p-6 space-y-5">
+                <div>
+                    <label for="pp-amount" class="block text-sm font-medium text-slate-200 mb-1">จำนวนเงิน (บาท)</label>
+                    <input id="pp-amount" type="number" min="1" step="0.01" inputmode="decimal" placeholder="เช่น 100"
+                        class="w-full rounded-xl bg-black/30 border border-brand-border px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-purple-400">
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <button type="button" data-amt="20" class="pp-quick px-3 py-1.5 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm hover:bg-purple-500/40">20</button>
+                        <button type="button" data-amt="50" class="pp-quick px-3 py-1.5 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm hover:bg-purple-500/40">50</button>
+                        <button type="button" data-amt="100" class="pp-quick px-3 py-1.5 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm hover:bg-purple-500/40">100</button>
+                        <button type="button" data-amt="500" class="pp-quick px-3 py-1.5 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm hover:bg-purple-500/40">500</button>
+                    </div>
+                </div>
+                <button id="pp-generate" type="button" class="w-full rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 transition-colors">
+                    <i class="fa-solid fa-qrcode mr-1"></i> สร้าง QR Code
+                </button>
+                <p id="pp-error" class="text-sm text-rose-400 hidden"></p>
+            </section>
+
+            <section class="bg-brand-card border border-brand-border rounded-3xl p-6 flex flex-col items-center justify-center text-center min-h-[22rem]">
+                <div id="pp-empty" class="text-slate-500 text-sm">
+                    <i class="fa-solid fa-qrcode text-5xl mb-3 block text-purple-400/40"></i>
+                    QR Code จะแสดงที่นี่
+                </div>
+                <div id="pp-result" class="hidden w-full flex flex-col items-center">
+                    <div class="bg-white rounded-2xl p-4"><div id="pp-qr"></div></div>
+                    <p class="mt-4 text-white font-semibold" id="pp-caption"></p>
+                    <p class="text-xs text-slate-400" id="pp-sub"></p>
+                    <div id="pp-demo" class="mt-4 w-full rounded-xl border border-amber-400/50 bg-amber-500/10 px-4 py-3 text-amber-300 text-sm font-semibold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> นี่คือเดโม่ ยังไม่สามารถใช้งานจริงได้</div>
+                </div>
+            </section>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-6 leading-relaxed">
+            หมายเหตุ: หน้านี้เป็นระบบจำลองเพื่อแสดงแนวคิดเท่านั้น QR Code ที่แสดงไม่ใช่ QR พร้อมเพย์จริง สแกนแล้วจะไม่มีการโอนเงิน และไม่มีการตรวจสอบการชำระเงินใดๆ
+        </p>
+    </main>
 </div>
 <div id="view-effects" class="view" hidden>
 
@@ -498,7 +554,7 @@
                 <!-- Cart items rendered here -->
             </div>
 
-            <div class="pt-4 border-t border-brand-border flex flex-col gap-3">
+            <div id="cartFooter" class="pt-4 border-t border-brand-border flex flex-col gap-3">
                 <div class="flex justify-between text-xs text-slate-400">
                     <span>ค่าธรรมเนียมแพลตฟอร์ม (2 บาท/ชิ้น):</span>
                     <span id="platformFeeText" class="text-amber-400 font-medium">0 บาท</span>
@@ -507,9 +563,23 @@
                     <span>ยอดชำระรวมทั้งหมด:</span>
                     <span id="totalPriceText" class="text-emerald-400">0 บาท</span>
                 </div>
-                <button onclick="checkout()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm py-3 rounded-xl transition shadow-lg cursor-pointer mt-2">
-                    ยืนยันการสั่งซื้อ & ส่งเข้าคลังของฉัน
+                <button onclick="startDemoPayment()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm py-3 rounded-xl transition shadow-lg cursor-pointer mt-2">
+                    ชำระเงินด้วย QR Code (เดโม่)
                 </button>
+            </div>
+
+            <!-- ขั้นตอนชำระเงิน (เดโม่) -->
+            <div id="payStep" class="hidden pt-4 flex flex-col items-center gap-3 text-center">
+                <p class="text-sm font-bold text-white">สแกนเพื่อชำระเงิน (PromptPay QR)</p>
+                <div id="qrBox" class="bg-white rounded-2xl p-3 w-48 h-48 flex items-center justify-center overflow-hidden"></div>
+                <p class="text-base font-bold text-emerald-400">ยอดชำระ <span id="payAmount">0</span> บาท</p>
+                <div id="demoNotice" class="w-full rounded-xl border border-rose-500/50 bg-rose-500/10 px-3 py-2 text-xs font-bold text-rose-300">
+                    ⚠️ นี่คือเดโม่ ยังไม่สามารถใช้งานจริงได้
+                </div>
+                <button onclick="confirmDemoPayment()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-sm py-3 rounded-xl transition shadow-lg cursor-pointer">
+                    ฉันโอนแล้ว (จำลอง) & ส่งเข้าคลังของฉัน
+                </button>
+                <button onclick="resetPayStep()" class="text-xs text-slate-400 hover:text-white cursor-pointer">← ย้อนกลับไปตะกร้า</button>
             </div>
         </div>
     </div>
@@ -951,7 +1021,44 @@
         function toggleCartModal() {
             const modal = document.getElementById('cartModal');
             modal.classList.toggle('hidden');
+            resetPayStep();
             updateCartUI();
+        }
+
+        // ===== ชำระเงินด้วย QR (เดโม่เท่านั้น ไม่มีเงินจริง) =====
+        function startDemoPayment() {
+            if (cart.length === 0) {
+                showToast('กรุณาเลือกเอฟเฟกต์ลงตะกร้าก่อนครับ');
+                return;
+            }
+            const total = cart.reduce((sum, i) => sum + i.price, 0) + cart.length * 2;
+            document.getElementById('payAmount').innerText = total;
+            const box = document.getElementById('qrBox');
+            try {
+                // ข้อความใน QR เป็นข้อความตัวอย่าง ไม่ใช่รหัสพร้อมเพย์จริง สแกนแล้วไม่ตัดเงิน
+                const qr = qrcode(0, 'M');
+                qr.addData('DEMO ONLY - NOT A REAL PAYMENT | LeeDonate | AMOUNT ' + total + ' THB');
+                qr.make();
+                box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+                const svg = box.querySelector('svg');
+                if (svg) { svg.style.width = '100%'; svg.style.height = '100%'; }
+            } catch (e) {
+                box.innerHTML = '<span class="text-xs text-slate-600">โหลด QR ไม่สำเร็จ</span>';
+            }
+            document.getElementById('cartItemsList').classList.add('hidden');
+            document.getElementById('cartFooter').classList.add('hidden');
+            document.getElementById('payStep').classList.remove('hidden');
+        }
+
+        function confirmDemoPayment() {
+            resetPayStep();
+            checkout();
+        }
+
+        function resetPayStep() {
+            document.getElementById('payStep').classList.add('hidden');
+            document.getElementById('cartItemsList').classList.remove('hidden');
+            document.getElementById('cartFooter').classList.remove('hidden');
         }
 
         // ยืนยันสั่งซื้อ -> ย้ายสินค้าเข้า My Inventory
@@ -971,7 +1078,7 @@
             updateCartUI();
             toggleCartModal();
             updateInventoryBadge();
-            showToast(`สั่งซื้อสำเร็จ ${boughtCount} รายการ! ส่งเข้า "คลังของฉัน" เรียบร้อย`);
+            showToast(`สั่งซื้อสำเร็จ (จำลอง) ${boughtCount} รายการ! ส่งเข้า "คลังของฉัน" เรียบร้อย`);
             switchTab('inventory');
         }
 
@@ -1096,16 +1203,53 @@
         renderEffects();
         updateInventoryBadge();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // ===== QR เดโม (หลอก) : ไม่ใช่ QR พร้อมเพย์จริง สแกนแล้วไม่มีการโอนเงิน =====
+        (function initDonate() {
+            const $ = id => document.getElementById(id);
+            const amtInput = $('pp-amount'), err = $('pp-error');
+
+            document.querySelectorAll('.pp-quick').forEach(b => b.addEventListener('click', () => {
+                amtInput.value = b.dataset.amt;
+                generate();
+            }));
+            $('pp-generate').addEventListener('click', generate);
+            amtInput.addEventListener('keydown', e => { if (e.key === 'Enter') generate(); });
+
+            function showError(msg) { err.textContent = msg; err.classList.remove('hidden'); }
+
+            function generate() {
+                err.classList.add('hidden');
+                if (typeof QRCode === 'undefined') { showError('โหลดตัวสร้าง QR ไม่สำเร็จ กรุณาตรวจสอบอินเทอร์เน็ตแล้วรีเฟรชหน้า'); return; }
+                const amount = Math.round(parseFloat(amtInput.value) * 100) / 100;
+                if (!(amount > 0) || amount > 1000000) { showError('กรอกจำนวนเงินที่มากกว่า 0 และไม่เกิน 1,000,000 บาท'); return; }
+
+                // ข้อมูลใน QR เป็นข้อความเดโม ไม่ใช่รูปแบบพร้อมเพย์ แอปธนาคารจึงจ่ายเงินจริงไม่ได้
+                const demoText = 'LEEDONATE-DEMO | amount=' + amount.toFixed(2) + ' THB | NOT A REAL PAYMENT';
+                const box = $('pp-qr');
+                box.innerHTML = '';
+                new QRCode(box, { text: demoText, width: 232, height: 232, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+
+                $('pp-caption').textContent = 'ยอดตัวอย่าง ' + amount.toLocaleString('th-TH', { minimumFractionDigits: 2 }) + ' บาท';
+                $('pp-sub').textContent = 'ผู้รับ: บัญชีตัวอย่าง (ไม่มีอยู่จริง)';
+                $('pp-empty').classList.add('hidden');
+                $('pp-result').classList.remove('hidden');
+            }
+        })();
+    </script>
     <script>
         // สลับหน้าด้วย hash: #home (หน้าหลัก) / #effects (ตลาดเอฟเฟกต์)
         function route() {
-            const isEffects = location.hash === '#effects';
-            document.getElementById('view-home').hidden = isEffects;
-            document.getElementById('view-effects').hidden = !isEffects;
-            document.title = isEffects
-                ? 'LeeDonate - ตลาดเอฟเฟกต์ คลังของฉัน & Creator Studio'
-                : 'LeeDonate - ศูนย์รวมซอร์สโค้ดโดเนทสตรีมเมอร์โอเพนซอร์ส';
-            if (isEffects || location.hash === '' || location.hash === '#home') window.scrollTo(0, 0);
+            const h = location.hash;
+            const view = h === '#effects' ? 'effects' : h === '#donate' ? 'donate' : 'home';
+            ['home', 'effects', 'donate'].forEach(v => { document.getElementById('view-' + v).hidden = (v !== view); });
+            document.title = {
+                effects: 'LeeDonate - ตลาดเอฟเฟกต์ คลังของฉัน & Creator Studio',
+                donate: 'LeeDonate - โดเนทผ่าน PromptPay QR',
+                home: 'LeeDonate - ศูนย์รวมซอร์สโค้ดโดเนทสตรีมเมอร์โอเพนซอร์ส'
+            }[view];
+            if (view !== 'home' || h === '' || h === '#home') window.scrollTo(0, 0);
         }
         window.addEventListener('hashchange', route);
         route();
